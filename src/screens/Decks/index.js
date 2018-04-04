@@ -35,7 +35,7 @@ class Decks extends Component {
         {this.props.decks.length > 0 && (
           <div>
             {this.props.decks.map(deck => (
-              <span>{deck.name}</span>
+              <span key={deck.id}>{deck.name}</span>
             ))}
           </div>
         )}
