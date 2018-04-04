@@ -3,7 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addDeck } from './actions';
+import { addDeck, fetchDecks } from './actions';
 
 class Decks extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class Decks extends Component {
     };
   }
   componentDidMount() {
-
+    this.props.fetchDecks();
   }
   handleDeckNameInput = e => {
     this.setState({
@@ -50,6 +50,6 @@ const mapStateToProps = state => {
   }
 };
 const mapDispatchToProps = {
-  addDeck
+  addDeck, fetchDecks
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Decks);
