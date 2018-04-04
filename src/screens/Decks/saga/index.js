@@ -4,7 +4,7 @@
 import { put } from 'redux-saga/effects';
 import db from '../../../db';
 import shortid from 'shortid';
-import { addDeckDone } from '../actions';
+import { addDeckDone, fetchDecksDone } from '../actions';
 
 export function* addDeck({ name }) {
   try {
@@ -23,7 +23,7 @@ export function* addDeck({ name }) {
 export function* fetchDecks() {
   try {
     const items = yield db.decks.toArray();
-    console.log(items);
+    yield put(fetchDecksDone(items))
   } catch (err) {
     console.log(err);
   }
