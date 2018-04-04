@@ -19,3 +19,12 @@ export function* addDeck({ name }) {
     console.log(err);
   }
 }
+
+export function* fetchDecks() {
+  try {
+    const items = yield db.decks.toArray();
+    console.log(items);
+  } catch (err) {
+    console.log(err);
+  }
+}
