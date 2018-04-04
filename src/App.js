@@ -1,15 +1,13 @@
-import React, {Component} from 'react'
+import React from 'react'
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import Decks from './screens/Decks';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <span>
-          FlashCards App
-        </span>
-      </div>
-    )
-  }
-}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/" component={Decks} />
+    </Switch>
+  </Router>
+);
 
 export default App
