@@ -9,3 +9,6 @@ export const addDeckDone = item => ({
   type: 'ADD_DECK_DONE',
   item
 });
+export const fetchDecks = () => ({
+  type: 'FETCH_DECKS'
+});
