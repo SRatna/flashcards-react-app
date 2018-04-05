@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addDeck, fetchDecks } from './actions';
 import './index.scss';
 
@@ -40,6 +41,7 @@ class Decks extends Component {
             {this.props.decks.map(deck => (
               <div className="deck-item" key={deck.id}>
                 <span>{deck.name}</span>
+                <Link to={`cards/${deck.id}`}>Add new card</Link>
               </div>
             ))}
           </div>
