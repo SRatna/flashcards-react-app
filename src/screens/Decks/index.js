@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addDeck, fetchDecks } from './actions';
+import './index.scss';
 
 class Decks extends Component {
   constructor(props) {
@@ -30,12 +31,16 @@ class Decks extends Component {
   render() {
     return (
       <div>
-        <input type="text" value={this.state.deckName} onChange={this.handleDeckNameInput}/>
-        <button onClick={this.handleNewDeckSubmission}>Submit</button>
+        <div className="add-deck">
+          <input type="text" value={this.state.deckName} onChange={this.handleDeckNameInput}/>
+          <button onClick={this.handleNewDeckSubmission}>+</button>
+        </div>
         {this.props.decks.length > 0 && (
-          <div>
+          <div className="decks">
             {this.props.decks.map(deck => (
-              <span key={deck.id}>{deck.name}</span>
+              <div className="deck-item" key={deck.id}>
+                <span>{deck.name}</span>
+              </div>
             ))}
           </div>
         )}
