@@ -13,9 +13,9 @@ export const fetchCards = deckID => ({
   type: 'FETCH_CARDS',
   deckID
 });
-export const fetchCardsDone = items => ({
+export const fetchCardsDone = (items, deck) => ({
   type: 'FETCH_CARDS_DONE',
-  items
+  items, deck
 });
 export const resetCards = () => ({
   type: 'RESET_CARDS'
