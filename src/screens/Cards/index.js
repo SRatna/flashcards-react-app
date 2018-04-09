@@ -3,6 +3,9 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { addCard, fetchCards, resetCards } from './actions';
+
 class Cards extends Component {
   constructor(props) {
     super(props);
@@ -12,15 +15,22 @@ class Cards extends Component {
       examples: ''
     }
   }
+  componentWillMount() {
+    this.props.resetCards();
+  }
   componentDidMount() {
-    console.log(this.props.match.params.deckID);
+    this.props.fetchCards(this.props.match.params.deckID);
   }
   handleSaveCardBtnClick = () => {
     const { word, meaning, examples } = this.state;
-    console.log(word, meaning, examples);
+    if (word && meaning && examples)
+      this.props.addCard({
+        word, meaning, examples, deckID: this.props.match.params.deckID
+      });
   };
   render() {
     const { word, meaning, examples } = this.state;
+    const { cards } = this.props;
     return (
       <div>
         <Link to="/">Back</Link>
@@ -50,10 +60,23 @@ class Cards extends Component {
         }} />
         <button onClick={this.handleSaveCardBtnClick}>Save</button>
         <br />
-        <span>You have not added any cards yet.</span>
+        {cards.length > 0
+          ? cards.map(card => (
+            <div key={card.id}>
+              <span>{card.word}</span>
+            </div>
+          )) : (
+            <span>You have not added any cards yet.</span>
+          )}
       </div>
     )
   }
 }
 
-export default Cards;
+const mapStateToProps = state => ({
+  cards: state.card.items
+});
+const mapDispatchToProps = {
+  addCard, fetchCards, resetCards
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Cards);
