@@ -3,8 +3,9 @@
  */
 import { combineReducers } from 'redux';
 import deck from './screens/Decks/reducers';
+import card from './screens/Cards/reducers';
 const appReducer = combineReducers({
-  deck
+  deck, card
 });
 
 export default appReducer;
