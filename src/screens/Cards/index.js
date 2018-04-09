@@ -79,12 +79,15 @@ class Cards extends Component {
         </div>
         {cards.length > 0
           ? cards.map(card => (
-            <div key={card.id}>
-              <span>{card.word}</span>
+            <div key={card.id} className="card-item">
+              <span className="word">{card.word}</span>
+              <span className="meaning">{card.meaning}</span>
+              <span className="examples">{card.examples}</span>
             </div>
           )) : (
             <span className="no-card">You have not added any cards yet.</span>
-          )}
+          )
+        }
       </div>
     )
   }
