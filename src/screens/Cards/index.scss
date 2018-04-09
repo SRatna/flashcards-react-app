@@ -1,28 +1,31 @@
-.add-card-container {
-  display: flex;
-  flex-direction: column;
+.cards-container {
+  height: 100%;
+}
+.header {
+  padding: 8px;
+  background: #929292;
+  color: #ffffff;
+  font-size: 17px;
 
-  .header {
-    padding: 8px;
-    background: #929292;
-    color: #ffffff;
-    font-size: 17px;
-
-    .go-back {
-      cursor: pointer;
-      position: absolute;
-      &:active {
-        color: #e1e1e1;
-      }
-      &:hover {
-        color: #e1e1e1;
-      }
+  .go-back {
+    cursor: pointer;
+    position: absolute;
+    &:active {
+      color: #e1e1e1;
     }
-    .title {
-      display: flex;
-      justify-content: center;
+    &:hover {
+      color: #e1e1e1;
     }
   }
+  .title {
+    display: flex;
+    justify-content: center;
+  }
+}
+.add-card-container {
+  display: none;
+  flex-direction: column;
+
   input, textarea, button {
     margin: 5px 5px 0;
     padding: 5px;
@@ -70,5 +73,30 @@
   .examples {
     font-style: italic;
     font-size: 13px;
+  }
+}
+.cards {
+  position: relative;
+  height: calc(100% - 45px);
+  overflow-y: auto;
+  padding-bottom: 5px;
+}
+.add-card {
+  display: inline;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  button {
+    color: #ffffff;
+    background: #6f6f6f;
+    font-size: 35px;
+    font-weight: 600;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.2s linear 0s;
+    border-radius: 21px;
+    min-width: 42px;
+    box-shadow: 1px 1px 2px 2px #b3b3b3;
   }
 }
