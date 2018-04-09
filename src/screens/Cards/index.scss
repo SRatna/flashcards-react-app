@@ -1,0 +1,41 @@
+.add-card-container {
+  display: flex;
+  flex-direction: column;
+  .go-back {
+    padding: 8px;
+    background: #929292;
+    color: #ffffff;
+    text-align: center;
+    font-size: 17px;
+    cursor: pointer;
+    &:active {
+      color: #e1e1e1;
+    }
+    &:hover {
+      color: #e1e1e1;
+    }
+  }
+  input, textarea, button {
+    margin: 5px;
+    padding: 5px;
+    font-size: 15px;
+    font-family: sans-serif;
+    border: 3px solid #cbcbcb;
+    transition: border 0.2s ease-in;
+    outline: none;
+    &:focus {
+      border: 3px solid #979797;
+    }
+  }
+  button {
+    background: #979797;
+    color: white;
+    cursor: pointer;
+    &:focus {
+      border: 3px solid #cbcbcb;
+    }
+    &:hover {
+      border: 3px solid #979797;
+    }
+  }
+}
