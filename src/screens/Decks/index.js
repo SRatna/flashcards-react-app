@@ -51,11 +51,9 @@ class Decks extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    decks: state.deck.items
-  }
-};
+const mapStateToProps = state => ({
+  decks: state.deck.items
+});
 const mapDispatchToProps = {
   addDeck, fetchDecks
 };
