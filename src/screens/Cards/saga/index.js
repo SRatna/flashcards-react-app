@@ -24,7 +24,8 @@ export function* addCard({ item }) {
 export function* fetchCards({ deckID }) {
   try {
     const items = yield db.cards.where('deckID').equals(deckID).toArray();
-    yield put(fetchCardsDone(items))
+    const deck = yield db.decks.get(deckID);
+    yield put(fetchCardsDone(items, deck))
   } catch (err) {
     console.log(err);
   }
