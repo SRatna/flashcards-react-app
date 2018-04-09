@@ -2,14 +2,15 @@
  * Created by sushanta on 4/6/18.
  */
 const initialState = {
-  items: []
+  items: [],
+  deckName: ''
 };
 const card = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_CARD_DONE':
       return { ...state, items: [...state.items, action.item] };
     case 'FETCH_CARDS_DONE':
-      return { ...state, items: action.items };
+      return { ...state, items: action.items, deckName: action.deck.name };
     case 'RESET_CARDS':
       return initialState;
     default:
