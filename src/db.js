@@ -5,7 +5,7 @@ import Dexie from 'dexie';
 
 const db = new Dexie('flashCardsDB');
 db.version(1).stores({
-  decks: `id, createdAt, name`
+  decks: `id, createdAt, name`,
+  cards: `id, createdAt, word, meaning, examples, deckID`
 });
-
 export default db;
