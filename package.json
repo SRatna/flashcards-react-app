@@ -9,7 +9,8 @@
     "start": "nwb serve-react-app",
     "test": "nwb test-react",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "analyze": "webpack-bundle-analyzer dist/stats.json dist"
   },
   "dependencies": {
     "dexie": "^2.0.2",
@@ -23,7 +24,9 @@
   },
   "devDependencies": {
     "nwb": "0.21.x",
-    "nwb-sass": "^0.8.4"
+    "nwb-sass": "^0.8.4",
+    "stats-webpack-plugin": "^0.6.2",
+    "webpack-bundle-analyzer": "^2.11.1"
   },
   "author": "",
   "license": "MIT",
