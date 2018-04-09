@@ -53,3 +53,22 @@
   font-size: 13px;
   text-align: center;
 }
+.card-item {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 5px 0;
+  padding: 10px;
+  border: 1px solid #cbcbcb;
+  box-shadow: 1px 1px 2px 1px #cbcbcb;
+  .word {
+    text-align: center;
+  }
+  .meaning {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+  .examples {
+    font-style: italic;
+    font-size: 13px;
+  }
+}
