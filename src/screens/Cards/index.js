@@ -37,17 +37,23 @@ class Cards extends Component {
   };
   render() {
     const { word, meaning, examples } = this.state;
-    const { cards, history } = this.props;
+    const { cards, history, deckName } = this.props;
     return (
       <div>
         <div className="add-card-container">
-          <span
-            className="go-back"
-            onClick={() => {
-            history.goBack();
-          }}>
-            Back
-          </span>
+          <div className="header">
+            <span
+              className="go-back"
+              onClick={() => {
+                history.goBack();
+              }}>
+              Back
+            </span>
+            <span className="title">
+              {deckName}
+            </span>
+          </div>
+
           <input
             placeholder="Add word..."
             type="text"
@@ -77,7 +83,7 @@ class Cards extends Component {
               <span>{card.word}</span>
             </div>
           )) : (
-            <span>You have not added any cards yet.</span>
+            <span className="no-card">You have not added any cards yet.</span>
           )}
       </div>
     )
@@ -85,7 +91,8 @@ class Cards extends Component {
 }
 
 const mapStateToProps = state => ({
-  cards: state.card.items
+  cards: state.card.items,
+  deckName: state.card.deckName
 });
 const mapDispatchToProps = {
   addCard, fetchCards, resetCards
