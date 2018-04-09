@@ -6,6 +6,12 @@ import { connect } from 'react-redux';
 import { addCard, fetchCards, resetCards } from './actions';
 import './index.scss';
 
+const BackSvg = () => (
+  <svg x="0px" y="0px" viewBox="0 0 31.494 31.494" width="20px" height="20px">
+    <path d="M10.273,5.009c0.444-0.444,1.143-0.444,1.587,0c0.429,0.429,0.429,1.143,0,1.571l-8.047,8.047h26.554  c0.619,0,1.127,0.492,1.127,1.111c0,0.619-0.508,1.127-1.127,1.127H3.813l8.047,8.032c0.429,0.444,0.429,1.159,0,1.587  c-0.444,0.444-1.143,0.444-1.587,0l-9.952-9.952c-0.429-0.429-0.429-1.143,0-1.571L10.273,5.009z" fill="#FFFFFF"/>
+  </svg>
+);
+
 class Cards extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +52,7 @@ class Cards extends Component {
               onClick={() => {
                 history.goBack();
               }}>
-              Back
+              <BackSvg/>
             </span>
           <span className="title">
               {deckName}
