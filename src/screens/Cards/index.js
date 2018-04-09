@@ -39,9 +39,8 @@ class Cards extends Component {
     const { word, meaning, examples } = this.state;
     const { cards, history, deckName } = this.props;
     return (
-      <div>
-        <div className="add-card-container">
-          <div className="header">
+      <div className="cards-container">
+        <div className="header">
             <span
               className="go-back"
               onClick={() => {
@@ -49,11 +48,11 @@ class Cards extends Component {
               }}>
               Back
             </span>
-            <span className="title">
+          <span className="title">
               {deckName}
             </span>
-          </div>
-
+        </div>
+        <div className="add-card-container">
           <input
             placeholder="Add word..."
             type="text"
@@ -77,17 +76,22 @@ class Cards extends Component {
             }} />
           <button onClick={this.handleSaveCardBtnClick}>Save</button>
         </div>
-        {cards.length > 0
-          ? cards.map(card => (
-            <div key={card.id} className="card-item">
-              <span className="word">{card.word}</span>
-              <span className="meaning">{card.meaning}</span>
-              <span className="examples">{card.examples}</span>
-            </div>
-          )) : (
-            <span className="no-card">You have not added any cards yet.</span>
-          )
-        }
+        <div className="cards">
+          {cards.length > 0
+            ? cards.map(card => (
+              <div key={card.id} className="card-item">
+                <span className="word">{card.word}</span>
+                <span className="meaning">{card.meaning}</span>
+                <span className="examples">{card.examples}</span>
+              </div>
+            )) : (
+              <span className="no-card">You have not added any cards yet.</span>
+            )
+          }
+          <div className="add-card">
+            <button>+</button>
+          </div>
+        </div>
       </div>
     )
   }
