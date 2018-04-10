@@ -4,6 +4,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addCard, fetchCards, resetCards } from './actions';
+import AddCardModal from './components/AddCardModal';
 import './index.scss';
 
 const BackSvg = () => (
@@ -16,9 +17,7 @@ class Cards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      word: '',
-      meaning: '',
-      examples: ''
+      addCardModalVisibility: false
     }
   }
   componentWillMount() {
@@ -27,25 +26,21 @@ class Cards extends Component {
   componentDidMount() {
     this.props.fetchCards(this.props.match.params.deckID);
   }
-  handleSaveCardBtnClick = () => {
-    const { word, meaning, examples } = this.state;
-    if (word && meaning && examples) {
-      this.props.addCard({
-        word, meaning, examples, deckID: this.props.match.params.deckID
-      });
-      this.setState({
-        word: '',
-        meaning: '',
-        examples: ''
-      });
 
-    }
-  };
   render() {
-    const { word, meaning, examples } = this.state;
-    const { cards, history, deckName } = this.props;
+    const { cards, history, deckName, match, addCard } = this.props;
     return (
       <div className="cards-container">
+        <AddCardModal
+          visibility={this.state.addCardModalVisibility}
+          deckID={match.params.deckID}
+          addCard={addCard}
+          closeModal={() => {
+            this.setState({
+              addCardModalVisibility: false
+            })
+          }}
+        />
         <div className="header">
             <span
               className="go-back"
@@ -57,30 +52,6 @@ class Cards extends Component {
           <span className="title">
               {deckName}
             </span>
-        </div>
-        <div className="add-card-container">
-          <input
-            placeholder="Add word..."
-            type="text"
-            value={word}
-            onChange={e => {
-              this.setState({ word: e.target.value });
-            }} />
-          <textarea
-            placeholder="Add meaning..."
-            rows="3"
-            value={meaning}
-            onChange={e => {
-              this.setState({ meaning: e.target.value });
-            }} />
-          <textarea
-            placeholder="Add examples..."
-            rows="3"
-            value={examples}
-            onChange={e => {
-              this.setState({ examples: e.target.value });
-            }} />
-          <button onClick={this.handleSaveCardBtnClick}>Save</button>
         </div>
         <div className="cards">
           {cards.length > 0
@@ -95,7 +66,11 @@ class Cards extends Component {
             )
           }
           <div className="add-card">
-            <button>+</button>
+            <button onClick={() => {
+              this.setState({
+                addCardModalVisibility: true
+              })
+            }}>+</button>
           </div>
         </div>
       </div>
