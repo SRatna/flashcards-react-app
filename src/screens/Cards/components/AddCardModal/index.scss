@@ -1,0 +1,87 @@
+.add-card-modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+  transition: opacity 0.2s ease-in;
+  .content {
+    background-color: #fefefe;
+    width: 90%;
+    margin: 15% auto;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      background-color: #797979;
+      .title {
+        flex: 1;
+        margin: auto;
+      }
+      .close {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+    .body {
+      display: flex;
+      flex-direction: column;
+
+      input, textarea, button {
+        margin: 5px 5px 0;
+        padding: 5px;
+        font-size: 15px;
+        font-family: sans-serif;
+        border: 3px solid #cbcbcb;
+        transition: border 0.2s ease-in;
+        outline: none;
+        &:focus {
+          border: 3px solid #979797;
+        }
+      }
+      button {
+        background: #979797;
+        color: white;
+        cursor: pointer;
+        margin-bottom: 5px;
+        &:focus {
+          border: 3px solid #cbcbcb;
+        }
+        &:hover {
+          border: 3px solid #979797;
+        }
+      }
+    }
+  }
+  &.invisible {
+    display: none;
+  }
+  &.visible {
+    display: block;
+    animation: show-card 0.2s linear forwards;
+  }
+}
+@keyframes show-card {
+  0% {
+    top: 100%;
+    opacity: 0;
+  }
+  25% {
+    top: 75%;
+    opacity: 0.25;
+  }
+  50% {
+    top: 50%;
+    opacity: 0.5;
+  }
+  75% {
+    top: 25%;
+    opacity: 0.75;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
+  }
+}
