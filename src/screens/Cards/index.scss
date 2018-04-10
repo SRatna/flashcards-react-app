@@ -22,34 +22,6 @@
     justify-content: center;
   }
 }
-.add-card-container {
-  display: none;
-  flex-direction: column;
-
-  input, textarea, button {
-    margin: 5px 5px 0;
-    padding: 5px;
-    font-size: 15px;
-    font-family: sans-serif;
-    border: 3px solid #cbcbcb;
-    transition: border 0.2s ease-in;
-    outline: none;
-    &:focus {
-      border: 3px solid #979797;
-    }
-  }
-  button {
-    background: #979797;
-    color: white;
-    cursor: pointer;
-    &:focus {
-      border: 3px solid #cbcbcb;
-    }
-    &:hover {
-      border: 3px solid #979797;
-    }
-  }
-}
 .no-card {
   margin: 15px;
   display: block;
