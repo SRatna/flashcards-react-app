@@ -22,7 +22,7 @@ export function* addDeck({ name }) {
 
 export function* fetchDecks() {
   try {
-    const items = yield db.decks.toArray();
+    const items = yield db.decks.reverse().sortBy('createdAt');
     yield put(fetchDecksDone(items))
   } catch (err) {
     console.log(err);
