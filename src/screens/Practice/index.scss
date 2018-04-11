@@ -1,0 +1,163 @@
+.practice {
+  height: 100%;
+  .header {
+    padding: 8px;
+    background: #929292;
+
+    .go-back {
+      cursor: pointer;
+      position: absolute;
+    }
+    .title {
+      display: flex;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 17px;
+    }
+  }
+  .practice-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 55px);
+    align-items: flex-start;
+    overflow-y: auto;
+    padding-top: 10px;
+    perspective: 1000px;
+
+    .all-done {
+      box-shadow: 1px -1px 1px 3px rgba(0, 0, 0, 0.1);
+      width: 88%;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      align-items: center;
+
+      button {
+        width: 100%;
+        margin: 10px;
+        padding: 8px;
+        border: 2px solid #99d01b;
+        border-radius: 5px;
+        background: white;
+        font-size: 15px;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+
+    .card-container {
+      width: 95%;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+
+      .card {
+        position: absolute;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        transform-style: preserve-3d;
+        padding: 5px;
+        .card-item {
+          position: absolute;
+          width: calc(100% - 10px);
+          backface-visibility: hidden;
+          text-align: center;
+          font-family: sans-serif;
+          border-radius: 5px;
+          box-shadow: 1px -1px 1px 3px rgba(0, 0, 0, 0.1);
+          color: #393939;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          h1 {
+            font-size: 25px;
+            font-weight: bold;
+            margin: 0;
+            padding-top: 15px;
+          }
+
+          .action {
+            display: flex;
+            flex-direction: column;
+
+            .button {
+              padding: 15px;
+              background: rgba(197, 190, 181, 0.27);
+              cursor: pointer;
+              border-bottom-right-radius: 5px;
+              border-bottom-left-radius: 5px;
+              transition: background 0.5s linear 0s;
+
+              &:hover {
+                background: rgba(197, 190, 181, 0.51);
+              }
+            }
+          }
+        }
+        .front {
+          min-height: 200px;
+          .word {
+            font-size: 20px;
+          }
+        }
+        .back {
+          transform: rotateY(180deg);
+
+          .meaning {
+            font-size: 16px;
+            padding: 15px;
+          }
+
+          .examples {
+            font-size: 14px;
+            font-style: italic;
+            padding: 10px;
+          }
+
+          .button {
+            &.positive {
+              color: #008000;
+              background: rgba(0, 253, 0, 0.48);
+              border-bottom-right-radius: 0;
+              border-bottom-left-radius: 0;
+              &:hover {
+                background: rgba(0, 253, 0, 0.68);
+              }
+            }
+            &.negative {
+              color: #ae0000;
+              background: rgba(255, 110, 122, 0.48);
+              &:hover {
+                background: rgba(255, 110, 122, 0.68);
+              }
+            }
+          }
+        }
+        &.flipped {
+          animation: flip-card 0.2s linear forwards;
+        }
+        &.next {
+          animation: next-card 0.2s linear forwards;
+        }
+      }
+    }
+  }
+}
+@keyframes flip-card {
+  100% {
+    transform: rotateY(180deg);
+  }
+}
+@keyframes next-card {
+  0% {
+    right: -250px;
+    opacity: 0;
+  }
+  100% {
+    right: 0;
+    opacity: 1;
+  }
+}
