@@ -34,8 +34,8 @@ class AddCardModal extends Component {
       <div
         className={`add-card-modal ${visibility ? 'visible' : 'invisible'}`}>
         <div className="content">
-          <div className="header">
-            <span className="title">
+          <div className="modal-header">
+            <span className="modal-title">
               Add New Card
             </span>
             <span
@@ -54,14 +54,14 @@ class AddCardModal extends Component {
               }} />
             <textarea
               placeholder="Add meaning..."
-              rows="3"
+              rows="5"
               value={meaning}
               onChange={e => {
                 this.setState({ meaning: e.target.value });
               }} />
             <textarea
               placeholder="Add examples..."
-              rows="3"
+              rows="5"
               value={examples}
               onChange={e => {
                 this.setState({ examples: e.target.value });
