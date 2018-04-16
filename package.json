@@ -26,6 +26,7 @@
     "nwb": "0.21.x",
     "nwb-sass": "^0.8.4",
     "stats-webpack-plugin": "^0.6.2",
+    "sw-precache-webpack-plugin": "^0.11.5",
     "webpack-bundle-analyzer": "^2.11.1",
     "webpack-manifest-plugin": "^2.0.0"
   },
