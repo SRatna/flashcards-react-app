@@ -7,12 +7,14 @@
     .go-back {
       cursor: pointer;
       position: absolute;
+      top: 15px;
     }
     .title {
       display: flex;
       justify-content: center;
       color: #ffffff;
-      font-size: 17px;
+      font-size: 1.5em;
+      margin: 3px;
     }
     .play {
       position: absolute;
@@ -20,13 +22,13 @@
       cursor: pointer;
       color: #ffffff;
       font-size: 14px;
-      top: 10px;
+      top: 17px;
     }
   }
   .no-card {
     margin: 15px;
     display: block;
-    font-size: 13px;
+    font-size: 1em;
     text-align: center;
   }
   .card-item {
@@ -38,38 +40,39 @@
     box-shadow: 1px 1px 2px 1px #cbcbcb;
     .word {
       text-align: center;
+      font-size: 1.2em;
     }
     .meaning {
-      font-size: 14px;
+      font-size: 1.1em;
       padding: 8px 0;
     }
     .examples {
       font-style: italic;
-      font-size: 13px;
+      font-size: 1em;
     }
   }
   .cards {
     position: relative;
-    height: calc(100% - 45px);
+    height: calc(100% - 55px);
     overflow-y: auto;
     padding-bottom: 5px;
   }
   .add-card {
     display: inline;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 15px;
+    right: 15px;
     button {
       color: #ffffff;
       background: #6f6f6f;
-      font-size: 35px;
+      font-size: 3em;
       font-weight: 600;
       border: 0;
       outline: none;
       cursor: pointer;
       transition: background 0.2s linear 0s;
-      border-radius: 21px;
-      min-width: 42px;
+      border-radius: 0.6em;
+      min-width: 1.2em;
       box-shadow: 1px 1px 2px 2px #b3b3b3;
     }
   }
