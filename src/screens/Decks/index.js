@@ -46,14 +46,14 @@ class Decks extends Component {
                     onClick={() => {
                     this.props.history.push(`cards/${deck.id}`);
                   }}>
-                    View cards
+                    View
                   </button>
                   <button
                     className="practice"
                     onClick={() => {
                     this.props.history.push(`practice/${deck.id}`);
                   }}>
-                    Practice this deck
+                    Practice
                   </button>
                 </div>
               </div>
