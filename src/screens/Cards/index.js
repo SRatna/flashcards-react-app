@@ -37,16 +37,23 @@ class Cards extends Component {
           }}
         />
         <div className="header">
-            <span
-              className="go-back"
-              onClick={() => {
-                history.goBack();
-              }}>
-              <BackSvg/>
-            </span>
+          <span
+            className="go-back"
+            onClick={() => {
+              history.goBack();
+            }}>
+            <BackSvg/>
+          </span>
           <span className="title">
-              {deckName}
-            </span>
+            {deckName}
+          </span>
+          <span
+            onClick={() => {
+              history.push(`/practice/${match.params.deckID}`)
+            }}
+            className="play">
+            Play
+          </span>
         </div>
         <div className="cards">
           {cards.length > 0
