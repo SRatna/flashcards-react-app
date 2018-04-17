@@ -41,6 +41,10 @@
     span {
       font-size: 1.5em;
     }
+    .delete {
+      cursor: pointer;
+      float: right;
+    }
     .action-buttons {
       display: flex;
       border-top: 1px solid #cbcbcb;
@@ -63,4 +67,9 @@
       }
     }
   }
+}
+.no-deck {
+  display: block;
+  padding: 5px;
+  text-align: center;
 }
