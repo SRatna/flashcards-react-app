@@ -7,7 +7,8 @@ import shortid from 'shortid';
 import {
   addDeckDone,
   fetchDecksDone,
-  deleteDeckDone
+  deleteDeckDone,
+  editDeckDone
 } from '../actions';
 
 export function* addDeck({ name }) {
@@ -39,6 +40,17 @@ export function* deleteDeck({ deckID }) {
     if (deleteCount === 1) {
       yield put(deleteDeckDone(deckID));
       yield db.cards.where('deckID').equals(deckID).delete();
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* editDeck({ deckID, name }) {
+  try {
+    const editCount = yield db.decks.where('id').equals(deckID).modify({ name });
+    if (editCount === 1) {
+      yield put(editDeckDone(deckID, name));
     }
   } catch (err) {
     console.log(err);
