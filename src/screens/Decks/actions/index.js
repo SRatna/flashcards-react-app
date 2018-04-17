@@ -16,3 +16,11 @@ export const fetchDecksDone = items => ({
   type: 'FETCH_DECKS_DONE',
   items
 });
+export const deleteDeck = deckID => ({
+  type: 'DELETE_DECK',
+  deckID
+});
+export const deleteDeckDone = deckID => ({
+  type: 'DELETE_DECK_DONE',
+  deckID
+});
