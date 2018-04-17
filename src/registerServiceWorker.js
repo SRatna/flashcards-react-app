@@ -57,6 +57,10 @@ function registerValidSW(swUrl) {
               // the fresh content will have been added to the cache.
               // It's the perfect time to display a "New content is
               // available; please refresh." message in your web app.
+              if (confirm('New content is available. Do you want ' +
+                  'to refresh now?')) {
+                window.location.reload(false);
+              }
               console.log('New content is available; please refresh.');
             } else {
               // At this point, everything has been precached.
