@@ -24,3 +24,11 @@ export const deleteDeckDone = deckID => ({
   type: 'DELETE_DECK_DONE',
   deckID
 });
+export const editDeck = (deckID, name) => ({
+  type: 'EDIT_DECK',
+  deckID, name
+});
+export const editDeckDone = (deckID, name) => ({
+  type: 'EDIT_DECK_DONE',
+  deckID, name
+});
