@@ -6,16 +6,19 @@ import { connect } from 'react-redux';
 import {
   addDeck,
   fetchDecks,
-  deleteDeck
+  deleteDeck,
+  editDeck
 } from './actions';
 import DeleteSvg from '../../components/DeleteSvg';
+import EditSvg from '../../components/EditSvg';
 import './index.scss';
 
 class Decks extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      deckName: ''
+      deckName: '',
+      beingEdited: null
     };
   }
   componentDidMount() {
@@ -33,10 +36,24 @@ class Decks extends Component {
       deckName: ''
     });
   };
-  handleDeckDeletion = (deckID) => {
+  handleDeckDeletion = deckID => {
     if (confirm('Do you really want to delete this deck ' +
         'along with its cards?')) {
       this.props.deleteDeck(deckID);
+    }
+  };
+  handleDeckEditBtnClick = deckID => {
+    this.setState({
+      beingEdited: deckID
+    });
+  };
+  handleDeckUpdate = (deckID, e) => {
+    if (e.key === 'Enter') {
+      const deckName = e.target.value;
+      this.props.editDeck(deckID, deckName);
+      this.setState({
+        beingEdited: null
+      });
     }
   };
   render() {
@@ -50,13 +67,31 @@ class Decks extends Component {
           <div className="decks">
             {this.props.decks.map(deck => (
               <div className="deck-item" key={deck.id}>
-                <span>{deck.name}</span>
-                <span
-                  onClick={() => this.handleDeckDeletion(deck.id)}
-                  className="delete"
-                >
-                  <DeleteSvg />
-                </span>
+                {this.state.beingEdited === deck.id ? (
+                  <div className="edit-mode">
+                    <div className="add-deck">
+                      <input
+                        autoFocus={true}
+                        onKeyPress={(e) => this.handleDeckUpdate(deck.id, e)}
+                        type="text"
+                        defaultValue={deck.name}/>
+                    </div>
+                  </div>
+                  ) : (
+                    <div className="head">
+                      <span className="name">{deck.name}</span>
+                      <span
+                        onClick={() => this.handleDeckDeletion(deck.id)}
+                        className="delete">
+                          <DeleteSvg />
+                      </span>
+                      <span
+                        onClick={() => this.handleDeckEditBtnClick(deck.id)}
+                        className="edit">
+                          <EditSvg />
+                      </span>
+                    </div>
+                  )}
                 <div className="action-buttons">
                   <button
                     className="view"
@@ -91,6 +126,6 @@ const mapStateToProps = state => ({
   decks: state.deck.items
 });
 const mapDispatchToProps = {
-  addDeck, fetchDecks, deleteDeck
+  addDeck, fetchDecks, deleteDeck, editDeck
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Decks);
