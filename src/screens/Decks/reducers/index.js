@@ -16,6 +16,14 @@ const deck = (state = initialState, action) => {
         items: state.items.filter(
           item => item.id !== action.deckID
         )};
+    case 'EDIT_DECK_DONE':
+      return {
+        ...state,
+        items: state.items.map(
+          item => item.id === action.deckID
+            ? { ...item, id: action.deckID, name: action.name }
+            : item
+        )};
     default:
       return state
   }
