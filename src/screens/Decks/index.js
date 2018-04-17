@@ -3,7 +3,12 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addDeck, fetchDecks } from './actions';
+import {
+  addDeck,
+  fetchDecks,
+  deleteDeck
+} from './actions';
+import DeleteSvg from '../../components/DeleteSvg';
 import './index.scss';
 
 class Decks extends Component {
@@ -28,6 +33,12 @@ class Decks extends Component {
       deckName: ''
     });
   };
+  handleDeckDeletion = (deckID) => {
+    if (confirm('Do you really want to delete this deck' +
+        'along with its cards?')) {
+      this.props.deleteDeck(deckID);
+    }
+  };
   render() {
     return (
       <div>
@@ -35,11 +46,17 @@ class Decks extends Component {
           <input type="text" value={this.state.deckName} onChange={this.handleDeckNameInput}/>
           <button onClick={this.handleNewDeckSubmission}>+</button>
         </div>
-        {this.props.decks.length > 0 && (
+        {this.props.decks.length > 0 ? (
           <div className="decks">
             {this.props.decks.map(deck => (
               <div className="deck-item" key={deck.id}>
                 <span>{deck.name}</span>
+                <span
+                  onClick={() => this.handleDeckDeletion(deck.id)}
+                  className="delete"
+                >
+                  <DeleteSvg />
+                </span>
                 <div className="action-buttons">
                   <button
                     className="view"
@@ -59,7 +76,12 @@ class Decks extends Component {
               </div>
             ))}
           </div>
-        )}
+        ) : (
+            <span className="no-deck">
+              You have not added any decks yet. Please add some and also add
+              flashcards on them and practice those cards.
+            </span>
+          )}
       </div>
     );
   }
@@ -69,6 +91,6 @@ const mapStateToProps = state => ({
   decks: state.deck.items
 });
 const mapDispatchToProps = {
-  addDeck, fetchDecks
+  addDeck, fetchDecks, deleteDeck
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Decks);
