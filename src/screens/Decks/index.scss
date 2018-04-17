@@ -38,12 +38,23 @@
     border: 1px solid #cbcbcb;
     margin: 5px;
     box-shadow: 1px -1px 2px 1px #cbcbcb;
-    span {
-      font-size: 1.5em;
+    .head {
+      .name {
+        font-size: 1.5em;
+      }
+      .delete, .edit {
+        cursor: pointer;
+        float: right;
+        margin-top: 5px;
+      }
+      .edit {
+        margin-right: 10px;
+      }
     }
-    .delete {
-      cursor: pointer;
-      float: right;
+    .edit-mode {
+      input {
+        margin: 0;
+      }
     }
     .action-buttons {
       display: flex;
