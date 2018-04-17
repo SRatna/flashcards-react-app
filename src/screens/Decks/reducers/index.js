@@ -10,6 +10,12 @@ const deck = (state = initialState, action) => {
       return { ...state, items: [action.item, ...state.items] };
     case 'FETCH_DECKS_DONE':
       return { ...state, items: action.items };
+    case 'DELETE_DECK_DONE':
+      return {
+        ...state,
+        items: state.items.filter(
+          item => item.id !== action.deckID
+        )};
     default:
       return state
   }
