@@ -34,7 +34,7 @@ class Decks extends Component {
     });
   };
   handleDeckDeletion = (deckID) => {
-    if (confirm('Do you really want to delete this deck' +
+    if (confirm('Do you really want to delete this deck ' +
         'along with its cards?')) {
       this.props.deleteDeck(deckID);
     }
