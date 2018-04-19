@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { addCard, fetchCards, resetCards } from './actions';
 import BackSvg from '../../components/BackSvg';
 import AddCardModal from './components/AddCardModal';
+import EditSvg from '../../components/EditSvg';
+import DeleteSvg from '../../components/DeleteSvg';
 import './index.scss';
 
 class Cards extends Component {
@@ -59,7 +61,15 @@ class Cards extends Component {
           {cards.length > 0
             ? cards.map(card => (
               <div key={card.id} className="card-item">
-                <span className="word">{card.word}</span>
+                <div className="word-actions">
+                  <span className="word">{card.word}</span>
+                  <span className="edit">
+                    <EditSvg/>
+                  </span>
+                  <span className="delete">
+                    <DeleteSvg/>
+                  </span>
+                </div>
                 <span className="meaning">{card.meaning}</span>
                 <span className="examples">{card.examples}</span>
               </div>
