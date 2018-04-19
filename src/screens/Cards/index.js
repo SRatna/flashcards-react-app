@@ -3,7 +3,12 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCard, fetchCards, resetCards } from './actions';
+import {
+  addCard,
+  fetchCards,
+  resetCards,
+  deleteCard
+} from './actions';
 import BackSvg from '../../components/BackSvg';
 import AddCardModal from './components/AddCardModal';
 import EditSvg from '../../components/EditSvg';
@@ -63,10 +68,14 @@ class Cards extends Component {
               <div key={card.id} className="card-item">
                 <div className="word-actions">
                   <span className="word">{card.word}</span>
-                  <span className="edit">
+                  <span
+                    onClick={() => null}
+                    className="edit">
                     <EditSvg/>
                   </span>
-                  <span className="delete">
+                  <span
+                    onClick={() => this.props.deleteCard(card.id)}
+                    className="delete">
                     <DeleteSvg/>
                   </span>
                 </div>
@@ -95,6 +104,6 @@ const mapStateToProps = state => ({
   deckName: state.card.deckName
 });
 const mapDispatchToProps = {
-  addCard, fetchCards, resetCards
+  addCard, fetchCards, resetCards, deleteCard
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);
