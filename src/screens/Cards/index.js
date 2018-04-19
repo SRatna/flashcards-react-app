@@ -85,7 +85,11 @@ class Cards extends Component {
                     <EditSvg/>
                   </span>
                   <span
-                    onClick={() => this.props.deleteCard(card.id)}
+                    onClick={() => {
+                      if (confirm('Do you really want to delete this card?')) {
+                        this.props.deleteCard(card.id)
+                      }
+                    }}
                     className="delete">
                     <DeleteSvg/>
                   </span>
