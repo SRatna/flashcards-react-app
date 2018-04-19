@@ -38,11 +38,6 @@ class AddCardModal extends Component {
             <span className="modal-title">
               Add New Card
             </span>
-            <span
-              onClick={closeModal}
-              className="close">
-              &times;
-            </span>
           </div>
           <div className="body">
             <input
@@ -66,7 +61,10 @@ class AddCardModal extends Component {
               onChange={e => {
                 this.setState({ examples: e.target.value });
               }} />
-            <button onClick={this.handleSaveCardBtnClick}>Save</button>
+            <div className="modal-actions">
+              <button onClick={this.handleSaveCardBtnClick}>Save</button>
+              <button onClick={closeModal}>Cancel</button>
+            </div>
           </div>
         </div>
       </div>
