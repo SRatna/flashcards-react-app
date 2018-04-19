@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import './index.scss';
 
-class AddCardModal extends Component {
+class AddEditCardModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -72,4 +72,4 @@ class AddCardModal extends Component {
   }
 }
 
-export default AddCardModal;
+export default AddEditCardModal;
