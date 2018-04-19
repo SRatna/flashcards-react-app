@@ -38,17 +38,28 @@
     padding: 10px;
     border: 1px solid #cbcbcb;
     box-shadow: 1px 1px 2px 1px #cbcbcb;
-    .word {
-      text-align: center;
-      font-size: 1.2em;
+    .word-actions {
+      display: flex;
+      border-bottom: 1px solid #bfbfbf;
+      padding-bottom: 5px;
+      .word {
+        font-size: 1.3em;
+        flex: 1;
+      }
+      .edit, .delete {
+        cursor: pointer;
+      }
+      .edit {
+        padding: 0 10px;
+      }
     }
     .meaning {
       font-size: 1.1em;
-      padding: 8px 0;
+      padding: 15px 0;
     }
     .examples {
       font-style: italic;
-      font-size: 1em;
+      font-size: 0.9em;
     }
   }
   .cards {
@@ -65,8 +76,7 @@
     button {
       color: #ffffff;
       background: #6f6f6f;
-      font-size: 3em;
-      font-weight: 600;
+      font-size: 2.8em;
       border: 0;
       outline: none;
       cursor: pointer;
