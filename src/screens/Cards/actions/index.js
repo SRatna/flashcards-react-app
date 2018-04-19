@@ -20,3 +20,11 @@ export const fetchCardsDone = (items, deck) => ({
 export const resetCards = () => ({
   type: 'RESET_CARDS'
 });
+export const deleteCard = cardID => ({
+  type: 'DELETE_CARD',
+  cardID
+});
+export const deleteCardDone = cardID => ({
+  type: 'DELETE_CARD_DONE',
+  cardID
+});
