@@ -28,3 +28,11 @@ export const deleteCardDone = cardID => ({
   type: 'DELETE_CARD_DONE',
   cardID
 });
+export const editCard = item => ({
+  type: 'EDIT_CARD',
+  item
+});
+export const editCardDone = item => ({
+  type: 'EDIT_CARD_DONE',
+  item
+});
