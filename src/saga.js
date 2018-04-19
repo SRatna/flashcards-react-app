@@ -8,7 +8,11 @@ import {
   deleteDeck,
   editDeck
 } from './screens/Decks/saga';
-import { addCard, fetchCards } from './screens/Cards/saga';
+import {
+  addCard,
+  fetchCards,
+  deleteCard
+} from './screens/Cards/saga';
 export default function* watcher() {
   yield all([
     takeLatest('ADD_DECK', addDeck),
@@ -16,6 +20,7 @@ export default function* watcher() {
     takeLatest('FETCH_DECKS', fetchDecks),
     takeLatest('EDIT_DECK', editDeck),
     takeLatest('ADD_CARD', addCard),
+    takeLatest('DELETE_CARD', deleteCard),
     takeLatest('FETCH_CARDS', fetchCards)
   ]);
 }
