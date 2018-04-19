@@ -19,6 +19,14 @@ const card = (state = initialState, action) => {
         items: state.items.filter(
           item => item.id !== action.cardID
         )};
+    case 'EDIT_CARD_DONE':
+      return {
+        ...state,
+        items: state.items.map(
+          item => item.id === action.item.id
+            ? action.item
+            : item
+        )};
     default:
       return state
   }
