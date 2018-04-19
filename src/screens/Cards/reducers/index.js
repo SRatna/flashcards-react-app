@@ -13,6 +13,12 @@ const card = (state = initialState, action) => {
       return { ...state, items: action.items, deckName: action.deck.name };
     case 'RESET_CARDS':
       return initialState;
+    case 'DELETE_CARD_DONE':
+      return {
+        ...state,
+        items: state.items.filter(
+          item => item.id !== action.cardID
+        )};
     default:
       return state
   }
