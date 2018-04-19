@@ -4,7 +4,11 @@
 import { put } from 'redux-saga/effects';
 import db from '../../../db';
 import shortid from 'shortid';
-import { addCardDone, fetchCardsDone } from '../actions';
+import {
+  addCardDone,
+  fetchCardsDone,
+  deleteCardDone
+} from '../actions';
 
 export function* addCard({ item }) {
   const cardItem = item;
@@ -26,6 +30,17 @@ export function* fetchCards({ deckID }) {
     const items = yield db.cards.where('deckID').equals(deckID).toArray();
     const deck = yield db.decks.get(deckID);
     yield put(fetchCardsDone(items, deck))
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export function* deleteCard({ cardID }) {
+  try {
+    const deleteCount = yield db.cards.where('id').equals(cardID).delete();
+    if (deleteCount === 1) {
+      yield put(deleteCardDone(cardID));
+    }
   } catch (err) {
     console.log(err);
   }
