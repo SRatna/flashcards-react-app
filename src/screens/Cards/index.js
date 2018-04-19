@@ -10,7 +10,7 @@ import {
   deleteCard
 } from './actions';
 import BackSvg from '../../components/BackSvg';
-import AddCardModal from './components/AddCardModal';
+import AddEditCardModal from './components/AddEditCardModal';
 import EditSvg from '../../components/EditSvg';
 import DeleteSvg from '../../components/DeleteSvg';
 import './index.scss';
@@ -33,7 +33,7 @@ class Cards extends Component {
     const { cards, history, deckName, match, addCard } = this.props;
     return (
       <div className="cards-container">
-        <AddCardModal
+        <AddEditCardModal
           visibility={this.state.addCardModalVisibility}
           deckID={match.params.deckID}
           addCard={addCard}
