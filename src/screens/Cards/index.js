@@ -7,7 +7,8 @@ import {
   addCard,
   fetchCards,
   resetCards,
-  deleteCard
+  deleteCard,
+  editCard
 } from './actions';
 import BackSvg from '../../components/BackSvg';
 import AddEditCardModal from './components/AddEditCardModal';
@@ -19,7 +20,8 @@ class Cards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addCardModalVisibility: false
+      addCardModalVisibility: false,
+      beingEdited: null
     }
   }
   componentWillMount() {
@@ -30,7 +32,7 @@ class Cards extends Component {
   }
 
   render() {
-    const { cards, history, deckName, match, addCard } = this.props;
+    const { cards, history, deckName, match, addCard, editCard } = this.props;
     return (
       <div className="cards-container">
         <AddEditCardModal
@@ -39,9 +41,15 @@ class Cards extends Component {
           addCard={addCard}
           closeModal={() => {
             this.setState({
-              addCardModalVisibility: false
+              addCardModalVisibility: false,
+              beingEdited: null
             })
           }}
+          cardData={
+            cards.find(card => card.id === this.state.beingEdited) || {}
+          }
+          editCard={editCard}
+          editMode={!!this.state.beingEdited}
         />
         <div className="header">
           <span
@@ -69,7 +77,10 @@ class Cards extends Component {
                 <div className="word-actions">
                   <span className="word">{card.word}</span>
                   <span
-                    onClick={() => null}
+                    onClick={() => this.setState({
+                      addCardModalVisibility: true,
+                      beingEdited: card.id
+                    })}
                     className="edit">
                     <EditSvg/>
                   </span>
@@ -89,7 +100,8 @@ class Cards extends Component {
           <div className="add-card">
             <button onClick={() => {
               this.setState({
-                addCardModalVisibility: true
+                addCardModalVisibility: true,
+                beingEdited: null
               })
             }}>+</button>
           </div>
@@ -104,6 +116,6 @@ const mapStateToProps = state => ({
   deckName: state.card.deckName
 });
 const mapDispatchToProps = {
-  addCard, fetchCards, resetCards, deleteCard
+  addCard, fetchCards, resetCards, deleteCard, editCard
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Cards);
